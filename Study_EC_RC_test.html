@@ -225,15 +225,7 @@
   //var CS = jsPsych.randomization.sampleWithoutReplacement([CS_45_Andy, CS_45_John], 1)[0];
 
   // preload
-  US_pos = _.flattenDeep(US_pos);
-  US_neg = _.flattenDeep(US_neg);
-  CS_45_Andy = _.flattenDeep(CS_45_Andy);
-  CS_45_John = _.flattenDeep(CS_45_John);
-
-  preloadimagesEC.push(US_pos);
-  preloadimagesEC.push(US_neg);
-  preloadimagesEC.push(CS_45_Andy);
-  preloadimagesEC.push(CS_45_John);
+  preloadimagesEC.push(US_pos, US_neg, CS_45_Andy, CS_45_John);
 
   // randomize order
   US_pos = _.shuffle(US_pos);
@@ -913,9 +905,10 @@ CSmemory.map(function(ciImg){
   timeline.push(comments);
   timeline.push(exitFullscreen);
 
-  timeline = _.flattenDeep(timeline); // do not remove this!
   preloadimages = _.flattenDeep(preloadimages);
   preloadimagesEC = _.flattenDeep(preloadimagesEC);
+
+  timeline = _.flattenDeep(timeline); // do not remove this!
 
   /* INITIALISE EXP  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   jsPsych.init({
