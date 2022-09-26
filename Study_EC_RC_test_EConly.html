@@ -87,8 +87,6 @@
   /* Initial variables */
   var timeline = [];
   var preloadimages = [];
-  var preloadimagesRC02 = [];
-  var preloadimagesEC = [];
   var stims = [];
 
   var jspsych_id = jsPsych.data.getURLVariable("id");
@@ -225,7 +223,7 @@
   //var CS = jsPsych.randomization.sampleWithoutReplacement([CS_45_Andy, CS_45_John], 1)[0];
 
   // preload
-  preloadimagesEC.push(US_pos, US_neg, CS_45_Andy, CS_45_John);
+  preloadimages.push(US_pos, US_neg, CS_45_Andy, CS_45_John);
 
   // randomize order
   US_pos = _.shuffle(US_pos);
@@ -522,94 +520,6 @@
   };
 
 
-// RC ---------------------------------------------------------------------------------------------------------------
-    /* Generate RC trials */
-    var imgsRC02 = _.range(1, numOfPairsRC02 + 1); // generate numerical sequence
-
-    imgsRC02 = imgsRC02.map(function (e) { return ['./img/faceOri' + e + '.jpg', './img/faceInv' + e + '.jpg'] }); // pairs ori and inv
-    imgsRC02 = _.flattenDeep(imgsRC02);
-
-    preloadimagesRC02 = imgsRC02;
-
-    // Full randomization:
-    // imgsRC02 = _.shuffle(imgsRC02);
-
-    // Full randomization but keep inv ori in the same trial
-    // imgsRC02 = _.flattenDeep(_.shuffle(_.chunk(imgsRC02, 2)));
-
-    // Create chunks
-    imgsRC02 = _.chunk(imgsRC02, 02); // 1 ori + 1 inv = 2 faces per trial
-
-    // Full randomization but keep inv ori in the same trial
-    // imgsRC02.map(function (e, i) { imgsRC02[i] = _.shuffle(e) });
-
-    var RC02_stim = [];
-    imgsRC02.map(function (e) { RC02_stim.push({ trialImgs: e }) });
-
-    /* RC */
-    var cssRC = "rcimg-02";
-    var imgWidth = 512;
-    var RCstim = RC02_stim;
-    var numOfPairs = numOfPairsRC02;
-    var preloadimages = preloadimagesRC02;
-    
-    var i = 1;
-    var RC1 = {
-        timeline_variables: RCstim,
-        randomize_order: true,
-        data: {
-            task: 'RC1',
-            numOfPairs: numOfPairs,
-            nameOrder: nameOrder
-        },
-        timeline: [{
-            type: 'html-mouse-response',
-            on_load: function () {
-                        $('.jspsych-content-wrapper').css({ "width": "1100px" });
-                        $('.jspsych-content').css({ "max-width": "100%" });
-            },
-            stimulus: function () {
-                html = "";
-                html += "<p>Choose the face that looks the most like <b>"+name1+"</b>:</p>";
-                jsPsych.timelineVariable('trialImgs', true).map(function (e) {
-                    html += "<img class='" + cssRC + "' src='" + e + "'>";
-                });
-                html += "</br>Trial: " + i + "/" + numOfPairs + "</br>";
-                i += 1;
-                return html;
-            },
-        }]
-    };
-
-var ii = 1;
-    var RC2 = {
-        timeline_variables: RCstim,
-        randomize_order: true,
-        data: {
-            task: 'RC2',
-            numOfPairs: numOfPairs,
-            nameOrder: nameOrder
-        },
-        timeline: [{
-            type: 'html-mouse-response',
-            on_load: function () {
-                        $('.jspsych-content-wrapper').css({ "width": "1100px" });
-                        $('.jspsych-content').css({ "max-width": "100%" });
-            },
-            stimulus: function () {
-                html = "";
-                html += "<p>Choose the face that looks the most like <b>"+name2+"</b>:</p>";
-                jsPsych.timelineVariable('trialImgs', true).map(function (e) {
-                    html += "<img class='" + cssRC + "' src='" + e + "'>";
-                });
-                html += "</br>Trial: " + ii + "/" + numOfPairs + "</br>";
-                ii += 1;
-                return html;
-            },
-        }]
-    };
-
-
 // Questions ---------------------------------------------------------------------------------------------------------------
 
 // Liking
@@ -888,9 +798,6 @@ CSmemory.map(function(ciImg){
   timeline.push(evacond);
   timeline.push(Instr_RC_gene);
   timeline.push(Instr_RC1);
-  timeline.push(RC1);
-  timeline.push(Instr_RC2);
-  timeline.push(RC2);
   timeline.push(Instr_Quest);
   timeline.push(liking);
   timeline.push(valence_awareness);
@@ -906,14 +813,12 @@ CSmemory.map(function(ciImg){
   timeline.push(exitFullscreen);
 
   preloadimages = _.flattenDeep(preloadimages);
-  preloadimagesEC = _.flattenDeep(preloadimagesEC);
 
   timeline = _.flattenDeep(timeline); // do not remove this!
 
   /* INITIALISE EXP  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   jsPsych.init({
     timeline: timeline,
-    preloadimages_EC: preloadimagesEC,
     preload_images: preloadimages,
     max_load_time: 500*1000,
     exclusions: {
