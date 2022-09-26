@@ -915,13 +915,13 @@ CSmemory.map(function(ciImg){
 
   timeline = _.flattenDeep(timeline); // do not remove this!
   preloadimages = _.flattenDeep(preloadimages);
-  preloadimagesEC = _.flattenDeep(preloadimagesEC);
+  //preloadimagesEC = _.flattenDeep(preloadimagesEC);
 
   /* INITIALISE EXP  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   jsPsych.init({
     timeline: timeline,
     preload_images: preloadimages,
-    preloadimages_EC: preloadimagesEC,
+    //preloadimages_EC: preloadimagesEC,
     max_load_time: 500*1000,
     exclusions: {
       min_width: 1100,
