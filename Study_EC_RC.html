@@ -528,6 +528,8 @@
     imgsRC02 = imgsRC02.map(function (e) { return ['./img/faceOri' + e + '.jpg', './img/faceInv' + e + '.jpg'] }); // pairs ori and inv
     imgsRC02 = _.flattenDeep(imgsRC02);
 
+    preloadimagesRC02 = imgsRC02;
+
     // Full randomization:
     // imgsRC02 = _.shuffle(imgsRC02);
 
@@ -548,7 +550,7 @@
     var imgWidth = 512;
     var RCstim = RC02_stim;
     var numOfPairs = numOfPairsRC02;
-    var preloadimagesRC02 = imgsRC02;
+    var preloadimagesRC = preloadimagesRC02;
     
     var i = 1;
     var RC1 = {
@@ -909,7 +911,7 @@ CSmemory.map(function(ciImg){
   /* INITIALISE EXP  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   jsPsych.init({
     timeline: _.flattenDeep(timeline),
-    preload_imagesRC: preloadimagesRC02,
+    preload_imagesRC: preloadimagesRC,
     preload_imagesEC: preloadimagesEC,
     max_load_time: 500*1000,
     exclusions: {
