@@ -85,6 +85,11 @@
   var numOfPairsRC02 = 5;  // Total number of pair images images (inv & ori) = 360
 
   /* Initial variables */
+  var preload = {
+    type: jsPsychPreload,
+    auto_preload: true 
+  }
+
   var timeline = [];
   var preloadimages = [];
   var preloadimagesRC02 = [];
@@ -881,6 +886,7 @@ CSmemory.map(function(ciImg){
 
   /* TIMELINES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   //timeline.push(consent);
+  timeline.push(preload);
   timeline.push(activeFullscreen);
   timeline.push(Quit_expe);
   timeline.push(Instr_gene1);
