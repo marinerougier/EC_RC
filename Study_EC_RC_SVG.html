@@ -86,7 +86,8 @@
 
   /* Initial variables */
   var timeline = [];
-  var preloadimages = [];
+  var preloadimagesEC = [];
+  var preloadimagesRC = [];
   var preloadimagesRC02 = [];
   var stims = [];
 
@@ -224,10 +225,7 @@
   //var CS = jsPsych.randomization.sampleWithoutReplacement([CS_45_Andy, CS_45_John], 1)[0];
 
   // preload
-  preloadimages.push(US_pos);
-  preloadimages.push(US_neg);
-  preloadimages.push(CS_45_Andy);
-  preloadimages.push(CS_45_John);
+  preloadimagesEC.push(US_pos, US_neg, CS_45_Andy, CS_45_John);
 
   // randomize order
   US_pos = _.shuffle(US_pos);
@@ -553,7 +551,7 @@
     var imgWidth = 512;
     var RCstim = RC02_stim;
     var numOfPairs = numOfPairsRC02;
-    var preloadimages = preloadimagesRC02;
+    var preloadimagesRC = preloadimagesRC02;
     
     var i = 1;
     var RC1 = {
@@ -907,13 +905,15 @@ CSmemory.map(function(ciImg){
   timeline.push(comments);
   timeline.push(exitFullscreen);
 
-  timeline = _.flattenDeep(timeline); // do not remove this!
-  preloadimages = _.flattenDeep(preloadimages);
+  //timeline = _.flattenDeep(timeline); // do not remove this!
+  preloadimagesRC02 = _.flattenDeep(preloadimagesRC02);
+  preloadimagesEC = _.flattenDeep(preloadimagesEC);
 
   /* INITIALISE EXP  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   jsPsych.init({
-    timeline: timeline,
-    preload_images: preloadimages,
+    timeline: _.flattenDeep(timeline),
+    preload_imagesRC: preloadimagesRC,
+    preload_imagesEC: preloadimagesEC,
     max_load_time: 500*1000,
     exclusions: {
       min_width: 1100,
