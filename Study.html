@@ -82,7 +82,7 @@
   var numOfUS = 8; // number of US to be paired with each CS
 
   /* Parameters for the Reverse Correlation task */
-  var numOfPairsRC02 = 5;  // Total number of pair images images (inv & ori) = 360
+  var numOfPairsRC02 = 400;  // Total number of pair images images (inv & ori) = 400
 
   /* Initial variables */
   var timeline = [];
@@ -284,7 +284,7 @@
       var html = "";
       html += "<h1>About this study</h1>";
       html += "<p class = 'justify'>In this study, you will complete two tasks and answer a few questions. ";
-      html += "The whole study should last around <b>25 minutes</b>. Note that it is extremely important that ";
+      html += "The whole study should last around <b>20 minutes</b>. Note that it is extremely important that ";
       html += "you remain <b>fully concentrated</b> during the entire study.</b></p>";
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to continue</p>";
       return html;
@@ -407,7 +407,7 @@
     choices: jsPsych.NO_KEYS,
     trial_duration: delayTrial,
     post_trial_gap: delayIti,
-    repetitions: 1, // here, 5
+    repetitions: 2, // total: 32 trials
     on_load: function () {
       $('body').css({ "cursor": "none" });
       $('.jspsych-content').css({ "max-width": "100%" });
@@ -790,9 +790,9 @@ CSmemory.map(function(ciImg){
   debrief += "to withdraw consent and have your data excluded, do not hesitate to contact us via Prolific Academic. If you are "; 
   debrief += "interested, you can also ask for the results of this experiment—be aware, however, that this could take several weeks "; 
   debrief += "to gather all the data we need and to analyze them. <br><br>";
-  debrief += "You can copy this code on Prolific: <b>68784134</b> ";
+  debrief += "You can copy this code on Prolific: <b>71778C1F</b> ";
   debrief += "or you can click on the following link to validate your participation:</p>";
-  debrief += "<a href='https://app.prolific.co/submissions/complete?cc=68784134' target='_blank'>click here</a><br><br>";
+  debrief += "<a href='https://app.prolific.co/submissions/complete?cc=71778C1F' target='_blank'>click here</a><br><br>";
 
 
   /* TIMELINES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
